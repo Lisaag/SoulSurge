@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AddRoom.cs" />
+    <Compile Include="Assets\Destroyer.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -76,6 +78,8 @@
     <Compile Include="Assets\Scripts\PlayerSword.cs" />
     <Compile Include="Assets\Scripts\Room.cs" />
     <Compile Include="Assets\Scripts\Rooms.cs" />
+    <Compile Include="Assets\Scripts\RoomSpawner.cs" />
+    <Compile Include="Assets\Scripts\RoomTemplates.cs" />
     <Compile Include="Assets\Scripts\Shop.cs" />
     <Compile Include="Assets\Scripts\SoulFragment.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

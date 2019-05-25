@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
 
 	void Die ()
 	{
-		Instantiate(bloodEffect, transform.position, Quaternion.identity, GameManager.instance.currentRoom.transform);
+		Instantiate(bloodEffect, transform.position, Quaternion.identity, GameObject.Find("Particles").transform);
 		Destroy(gameObject);
 	}
 

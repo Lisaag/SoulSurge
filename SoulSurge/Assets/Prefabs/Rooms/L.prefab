@@ -323,7 +323,6 @@ MonoBehaviour:
   hasToSpawn: 3
   spawned: 0
   offset: {x: -6.5, y: 0, z: 0}
-  rooms: []
 --- !u!1 &8629716974933538376
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +393,7 @@ GameObject:
   - component: {fileID: -6654404668915476755}
   m_Layer: 0
   m_Name: L
-  m_TagString: Untagged
+  m_TagString: R
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

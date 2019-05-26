@@ -95,7 +95,7 @@ MonoBehaviour:
   hasToSpawn: 2
   spawned: 0
   offset: {x: 6.5, y: 0, z: 0}
-  rooms: []
+  gridGenerator: {fileID: 0}
 --- !u!1 &5559213294428841393
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   hasToSpawn: 3
   spawned: 0
   offset: {x: -6.5, y: 0, z: 0}
-  rooms: []
+  gridGenerator: {fileID: 0}
 --- !u!1 &5559213295256558535
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
   hasToSpawn: 0
   spawned: 0
   offset: {x: 0.24, y: 4.825, z: 0}
-  rooms: []
+  gridGenerator: {fileID: 0}
 --- !u!1 &5559213295544831192
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: -947021529983546695}
   m_Layer: 0
   m_Name: TLR
-  m_TagString: Untagged
+  m_TagString: R
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

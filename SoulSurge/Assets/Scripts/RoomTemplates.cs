@@ -13,6 +13,8 @@ public class RoomTemplates : MonoBehaviour
 
     public List<GameObject> rooms;
 
+    public GridGenerator gridGenerator;
+
     public float waitTimer;
     private bool spawnedBoss;
     public GameObject boss;
@@ -30,6 +32,7 @@ public class RoomTemplates : MonoBehaviour
         {
             Instantiate(boss, rooms[rooms.Count - 1].transform.position, Quaternion.identity);
             spawnedBoss = true;
+            gridGenerator.GenerateGrid();
         }
         else
         {

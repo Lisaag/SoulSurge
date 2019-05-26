@@ -209,7 +209,6 @@ MonoBehaviour:
   hasToSpawn: 3
   spawned: 0
   offset: {x: -6.5, y: 0, z: 0}
-  rooms: []
 --- !u!1 &978009672946291494
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +393,7 @@ GameObject:
   - component: {fileID: 2922762580182834003}
   m_Layer: 0
   m_Name: LBR
-  m_TagString: Untagged
+  m_TagString: R
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,7 +691,6 @@ MonoBehaviour:
   hasToSpawn: 1
   spawned: 0
   offset: {x: 0, y: -4.825, z: 0}
-  rooms: []
 --- !u!1 &8722046172986535932
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,4 +786,3 @@ MonoBehaviour:
   hasToSpawn: 2
   spawned: 0
   offset: {x: 6.5, y: 0, z: 0}
-  rooms: []

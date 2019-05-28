@@ -1986,7 +1986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f2ad0538af46f49becc426a8140a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 5038127710331372868, guid: b021fcf5f3b197a4c8f66172b836139b, type: 3}
+  camera: {fileID: 519420031}
+  stone: {fileID: 5038127710331372868, guid: b021fcf5f3b197a4c8f66172b836139b, type: 3}
 --- !u!4 &1023444895
 Transform:
   m_ObjectHideFlags: 0

@@ -35,5 +35,7 @@ public class RoomTemplates : MonoBehaviour
         {
             waitTimer -= Time.deltaTime;
         }
+
+        Debug.Log(rooms.Count);
     }
 }

@@ -18,12 +18,15 @@ public class GridGenerator : MonoBehaviour
     private int cellIndex = 0;
 
     private int roomI = 0;
-    private int roomAmount;
+    private int roomAmount = 0;
     List<Vector2> roomPos = new List<Vector2>();
+    private int cellValue = 1;
 
     public Camera camera;
 
     public GameObject stone;
+
+   // int[,] gridNumbers = new int[height, width];
 
     void Start()
     {
@@ -41,16 +44,10 @@ public class GridGenerator : MonoBehaviour
         {
             int rowIndex = 0;
             roomPos.Add(r.transform.position);
-            int[,] gridNumbers = {
-            { 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1 },
-            { 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
-            { 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0 },        
-            { 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0 },
-            { 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1 },
-            { 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1 },
-            { 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1 }
+
+            int[,] gridNumbers = new int[height, width];
+            gridNumbers = GeneratePattern(gridNumbers);
            
-        };
             Vector2[,] gridPositions = new Vector2[100, width * height];
             roomPos[roomAmount] += initPos - roomOffset;
             gizmoData.Add(new GizmoData());
@@ -63,12 +60,15 @@ public class GridGenerator : MonoBehaviour
                 {
                     gridPositions[rowIndex, columnIndex] = new Vector2(x + gridOffset, -y - gridOffset) + roomPos[roomAmount];
 
-                    gizmoData[roomAmount].gizmoLocation[rowIndex, columnIndex] = gridPositions[rowIndex, columnIndex];
-                    gizmoData[roomAmount].gizmoColor[roomI, columnIndex] = gizmoColor;
+                    gizmoData[roomAmount].gizmoLocation[rowIndex, columnIndex] = gridPositions[y, x];
 
                     if (gridNumbers[rowIndex, columnIndex] == 1)
                     {
-                        gizmoData[roomAmount].gizmoColor[roomI, columnIndex] = Color.yellow;
+                        gizmoData[roomAmount].gizmoColor[y, x] = Color.yellow;
+                    }
+                    else
+                    {
+                        gizmoData[roomAmount].gizmoColor[y, x] = Color.black;
                     }
 
                     cellIndex++;
@@ -76,7 +76,7 @@ public class GridGenerator : MonoBehaviour
                 }
                 rowIndex++;
             }
-
+            
             allGridNumbers.Add(gridNumbers);
             allGridPositions.Add(gridPositions);
        
@@ -135,7 +135,6 @@ public class GridGenerator : MonoBehaviour
             }
         }
 
-        int gridSize = width * height;
 
         for (int i = 0, x = 1; i < M; i++)
         {
@@ -143,14 +142,12 @@ public class GridGenerator : MonoBehaviour
             {
                 if (future[i, j] == 0)
                 {
-                    Debug.Log("isnul"+ ((x * j)));
                     // gizmoData[(x * j) + gridSize * roomIndex].gizmoColor = Color.black;
                     gizmoData[roomIndex].gizmoColor[i, j] = Color.black;
                     grid[i, j] = future[i, j];
                 }
                 else
                 {
-                    Debug.Log("iseen");
                     gizmoData[roomIndex].gizmoColor[i, j] = Color.yellow;
                     grid[i, j] = future[i, j];
                 }
@@ -199,12 +196,47 @@ public class GridGenerator : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.G))
         {
+            Debug.Log("Roomindex: " + roomI);
             nextGeneration(allGridNumbers[roomI], height, width, roomI);
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.Return))
         {
             PlaceObjects();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            cellValue++;
+            Debug.Log("cellvalue: " + cellValue);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            cellValue--;
+            Debug.Log("cellvalue: " + cellValue);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            allGridNumbers[roomI] = GeneratePattern(allGridNumbers[roomI]);
+
+
+            for (int i = 0, x = 1; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (allGridNumbers[roomI][i, j] == 0)
+                    {
+                        // gizmoData[(x * j) + gridSize * roomIndex].gizmoColor = Color.black;
+                        gizmoData[roomI].gizmoColor[i, j] = Color.black;
+                    }
+                    else
+                    {
+                        gizmoData[roomI].gizmoColor[i, j] = Color.yellow;
+                    }
+                }
+                x++;
+            }
+
         }
     }
 
@@ -223,4 +255,20 @@ public class GridGenerator : MonoBehaviour
             }
         //invisible gizmo's for 0, visible for 1?
     }
+
+    int[,] GeneratePattern(int[,] grid)
+    {
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                int gridValue = Random.Range(0, 2);
+                grid[i, j] = (int)gridValue;
+            }
+        }
+
+        return grid;
+    }
+
+    
 }

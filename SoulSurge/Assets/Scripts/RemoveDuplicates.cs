@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class RemoveDuplicates : MonoBehaviour
 {
-    private void CollisionEnter2D(Collider2D other)
+    RoomTemplates roomTemplates;
+    private bool hasSpawned;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other);   
         if (other.gameObject.CompareTag("DuplicateChecker"))
         {
-            Destroy(other.gameObject.transform.parent);
-            Debug.Log("Removed duplicate");
+            if (!other.transform.parent.CompareTag("SpawnRoom"))
+            {
+                //  transform.parent.gameObject.SetActive(false);
+                Debug.Log("Removed duplicate");
+            }
         }
-        Debug.Log(other);
     }
 
-    private void CollisionStay2D(Collider2D other)
+    private void Start()
     {
-        if (other.gameObject.CompareTag("DuplicateChecker"))
-        {
-            Destroy(other.gameObject.transform.parent);
-            Debug.Log("Removed duplicate");
-        }
+        roomTemplates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
+    }
+
+    void Update()
+    {
+
     }
 }

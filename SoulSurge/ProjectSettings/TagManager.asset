@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Spawnpoint
   - DuplicateChecker
+  - SpawnRoom
+  - Wall
   layers:
   - Default
   - TransparentFX

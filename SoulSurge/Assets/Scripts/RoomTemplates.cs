@@ -14,28 +14,34 @@ public class RoomTemplates : MonoBehaviour
     public List<GameObject> rooms;
 
     public float waitTimer;
-    private bool spawnedBoss;
+    private bool canSpawnBoss = false;
+    private bool spawnedBoss = false;
+    private int counter;
     public GameObject boss;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (waitTimer <= 0 && !spawnedBoss)
-        {
-            Instantiate(boss, rooms[rooms.Count - 1].transform.position, Quaternion.identity);
-            spawnedBoss = true;
-        }
-        else
+        if (waitTimer >= 0)
         {
             waitTimer -= Time.deltaTime;
         }
+        else
+        {
+            if (!canSpawnBoss)
+            {
+                canSpawnBoss = true;
+            }
+        }
 
-        Debug.Log(rooms.Count);
+        if (canSpawnBoss)
+        {
+            if (!spawnedBoss)
+            {
+                Instantiate(boss, rooms[rooms.Count - 1].transform.position, Quaternion.identity, rooms[rooms.Count - 1].transform);
+                spawnedBoss = true;
+                Debug.Log("Spawned boss at " + rooms[rooms.Count - 1].gameObject.name);
+            }
+        }
     }
 }

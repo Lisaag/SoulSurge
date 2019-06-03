@@ -12,7 +12,7 @@ public class GridGenerator : MonoBehaviour
     private List<Vector2[,]> allGridPositions = new List<Vector2[,]>();
     private List<int[,]> allGridNumbers = new List<int[,]>();
 
-   List<GizmoData> gizmoData = new List<GizmoData>();
+    List<GizmoData> gizmoData = new List<GizmoData>();
     private Vector2 gizmoLocations;
     private Color gizmoColor = Color.black;
     private int cellIndex = 0;
@@ -24,9 +24,9 @@ public class GridGenerator : MonoBehaviour
 
     public Camera camera;
 
-    public GameObject stone;
+    public GameObject[] objects;
 
-   // int[,] gridNumbers = new int[height, width];
+    // int[,] gridNumbers = new int[height, width];
 
     void Start()
     {
@@ -47,7 +47,7 @@ public class GridGenerator : MonoBehaviour
 
             int[,] gridNumbers = new int[height, width];
             gridNumbers = GeneratePattern(gridNumbers);
-           
+
             Vector2[,] gridPositions = new Vector2[100, width * height];
             roomPos[roomAmount] += initPos - roomOffset;
             gizmoData.Add(new GizmoData());
@@ -76,10 +76,10 @@ public class GridGenerator : MonoBehaviour
                 }
                 rowIndex++;
             }
-            
+
             allGridNumbers.Add(gridNumbers);
             allGridPositions.Add(gridPositions);
-       
+
             int randomRow = Random.Range(2, height - 2);
             int randomColumn = Random.Range(2, width - 2);
 
@@ -115,19 +115,19 @@ public class GridGenerator : MonoBehaviour
                 // Implementing the Rules of Life 
 
                 // Cell is lonely and dies 
-                if ((grid[l, m] == 1) &&
-                            (aliveNeighbours < 2))
+                if ((grid[l, m] == cellValue) &&
+                            (aliveNeighbours < 2 * cellValue))
                     future[l, m] = 0;
 
                 // Cell dies due to over population 
-                else if ((grid[l, m] == 1) &&
-                             (aliveNeighbours > 3))
+                else if ((grid[l, m] == cellValue) &&
+                             (aliveNeighbours > 3 * cellValue))
                     future[l, m] = 0;
 
                 // A new cell is born 
                 else if ((grid[l, m] == 0) &&
-                            (aliveNeighbours == 3))
-                    future[l, m] = 1;
+                            (aliveNeighbours == 3 * cellValue))
+                    future[l, m] = cellValue;
 
                 // Remains the same 
                 else
@@ -146,9 +146,14 @@ public class GridGenerator : MonoBehaviour
                     gizmoData[roomIndex].gizmoColor[i, j] = Color.black;
                     grid[i, j] = future[i, j];
                 }
-                else
+                else if (future[i, j] == 1)
                 {
                     gizmoData[roomIndex].gizmoColor[i, j] = Color.yellow;
+                    grid[i, j] = future[i, j];
+                }
+                else if (future[i, j] == 2)
+                {
+                    gizmoData[roomIndex].gizmoColor[i, j] = Color.red;
                     grid[i, j] = future[i, j];
                 }
             }
@@ -159,16 +164,31 @@ public class GridGenerator : MonoBehaviour
     void PlaceObjects()
     {
         int roomNum = 0;
-        foreach(int[,] n in allGridNumbers)
+        foreach (int[,] n in allGridNumbers)
         {
+            Debug.Log("roomNum: " + roomNum);
             Vector2[,] positions = allGridPositions[roomNum];
-            for(int y = 0; y < height; y++)
+            for (int y = 0; y < height; y++)
             {
-                for(int x = 0; x < width; x++)
+                for (int x = 0; x < width; x++)
                 {
-                    if(n[y, x] == 1)
+                    if (n[y, x] == 1)
                     {
-                        Instantiate(stone, positions[y, x], Quaternion.identity);
+                        Instantiate(objects[0], positions[y, x], Quaternion.identity);
+                    }
+                    else if (n[y, x] == 2)
+                    {
+                        int objectIndex = Random.Range(0, 101);
+
+                        if (objectIndex <= 50)
+                        {
+                            Instantiate(objects[2], positions[y, x], Quaternion.identity);
+                        }
+                        else if (objectIndex > 50 && objectIndex <= 100)
+                        {
+                            int i = Random.Range(3, 6);
+                            Instantiate(objects[i], positions[y, x], Quaternion.identity);
+                        }
                     }
                 }
             }
@@ -176,22 +196,22 @@ public class GridGenerator : MonoBehaviour
         }
     }
 
-        void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
             roomI++;
             Debug.Log("Roomindex: " + roomI);
-          //  Vector3 newCameraPos = new Vector3(roomPos[roomIndex].x, roomPos[roomIndex].y, -10);
-          //  camera.transform.position = newCameraPos;
+            //  Vector3 newCameraPos = new Vector3(roomPos[roomIndex].x, roomPos[roomIndex].y, -10);
+            //  camera.transform.position = newCameraPos;
         }
 
         else if (Input.GetKeyDown(KeyCode.P))
         {
             roomI--;
             Debug.Log("Roomindex: " + roomI);
-          //  Vector3 newCameraPos = new Vector3(roomPos[roomIndex].x, roomPos[roomIndex].y, -10);
-           // camera.transform.position = newCameraPos;
+            //  Vector3 newCameraPos = new Vector3(roomPos[roomIndex].x, roomPos[roomIndex].y, -10);
+            // camera.transform.position = newCameraPos;
         }
 
         else if (Input.GetKeyDown(KeyCode.G))
@@ -215,6 +235,8 @@ public class GridGenerator : MonoBehaviour
             cellValue--;
             Debug.Log("cellvalue: " + cellValue);
         }
+
+        //Reset -- generate new pattern
         else if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             allGridNumbers[roomI] = GeneratePattern(allGridNumbers[roomI]);
@@ -229,9 +251,13 @@ public class GridGenerator : MonoBehaviour
                         // gizmoData[(x * j) + gridSize * roomIndex].gizmoColor = Color.black;
                         gizmoData[roomI].gizmoColor[i, j] = Color.black;
                     }
-                    else
+                    else if (allGridNumbers[roomI][i, j] == 1)
                     {
                         gizmoData[roomI].gizmoColor[i, j] = Color.yellow;
+                    }
+                    else if (allGridNumbers[roomI][i, j] == 2)
+                    {
+                        gizmoData[roomI].gizmoColor[i, j] = Color.red;
                     }
                 }
                 x++;
@@ -241,10 +267,10 @@ public class GridGenerator : MonoBehaviour
     }
 
     void OnDrawGizmos()
-    {      
-        // Draw a yellow sphere at the transform's position
-        foreach(GizmoData g in gizmoData)
-        
+    {
+        //Draw sphere's to represent on which position, what kind of object will spawn
+        foreach (GizmoData g in gizmoData)
+
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
@@ -253,22 +279,34 @@ public class GridGenerator : MonoBehaviour
                     Gizmos.DrawSphere(g.gizmoLocation[i, j], 0.5f);
                 }
             }
-        //invisible gizmo's for 0, visible for 1?
     }
 
+
+    //Generates initial pattern for each iteration, also used to reset room with a new pattern
     int[,] GeneratePattern(int[,] grid)
     {
         for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++)
             {
+                //don't overlap cells that are already filled
+                if (grid[i, j] > 0 && grid[i, j] < cellValue)
+                {
+                    continue;
+                }
+
                 int gridValue = Random.Range(0, 2);
-                grid[i, j] = (int)gridValue;
+                if (gridValue == 1)
+                {
+                    grid[i, j] = cellValue;
+                }
+                else
+                {
+                    grid[i, j] = 0;
+                }
             }
         }
 
         return grid;
     }
-
-    
 }

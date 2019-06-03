@@ -12,6 +12,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyLarger
       objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: attackRange
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: attackOffset.y
+      value: 0.561
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: chaseRange
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4379883896656103373, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,16 +91,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: attackRange
-      value: 1.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: attackOffset.y
-      value: 0.561
       objectReference: {fileID: 0}
     - target: {fileID: 4379883896656103374, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}

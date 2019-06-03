@@ -12,6 +12,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: chaseRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: attackRange
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: spriteRight
+      value: 
+      objectReference: {fileID: 2043702947135161936, guid: 37726d14efa4d774c857433006003b42,
+        type: 3}
+    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: spriteLeft
+      value: 
+      objectReference: {fileID: 3816275015692893707, guid: 37726d14efa4d774c857433006003b42,
+        type: 3}
+    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: spriteUp
+      value: 
+      objectReference: {fileID: -3693486103535584935, guid: 37726d14efa4d774c857433006003b42,
+        type: 3}
+    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: spriteDown
+      value: 
+      objectReference: {fileID: -687224431234695604, guid: 37726d14efa4d774c857433006003b42,
+        type: 3}
+    - target: {fileID: 1585524469782198143, guid: c32f70f1f0c882f43b53ccdbff1c4146,
+        type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1585524469782198140, guid: c32f70f1f0c882f43b53ccdbff1c4146,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76,50 +120,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: chaseRange
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: attackRange
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: spriteRight
-      value: 
-      objectReference: {fileID: 2043702947135161936, guid: 37726d14efa4d774c857433006003b42,
-        type: 3}
-    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: spriteLeft
-      value: 
-      objectReference: {fileID: 3816275015692893707, guid: 37726d14efa4d774c857433006003b42,
-        type: 3}
-    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: spriteUp
-      value: 
-      objectReference: {fileID: -3693486103535584935, guid: 37726d14efa4d774c857433006003b42,
-        type: 3}
-    - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: spriteDown
-      value: 
-      objectReference: {fileID: -687224431234695604, guid: 37726d14efa4d774c857433006003b42,
-        type: 3}
-    - target: {fileID: 1585524469782198143, guid: c32f70f1f0c882f43b53ccdbff1c4146,
-        type: 3}
-      propertyPath: health
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1585524469250805971, guid: c32f70f1f0c882f43b53ccdbff1c4146,
         type: 3}

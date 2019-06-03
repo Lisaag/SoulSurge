@@ -9,7 +9,7 @@ public class EnemySimpleAI : MonoBehaviour
 	public float moveSpeed = 4f;
 	public float turnSpeed = .1f;
 
-	public float chaseRange = 999f;
+	public float chaseRange = 3f;
 
 	public float attackRange = .2f;
 	public float attackRate = 1f;

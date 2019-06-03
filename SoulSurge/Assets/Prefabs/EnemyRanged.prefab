@@ -112,6 +112,61 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyRanged
       objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4074260021421247650, guid: e55b3ae0494cb3b498e80f8b873ddb2a,
+        type: 3}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: isRanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: attackRange
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: attackRate
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: spriteRight
+      value: 
+      objectReference: {fileID: -8935884951425722877, guid: 7225921dc4d90e7458e1b197df74dafe,
+        type: 3}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: spriteLeft
+      value: 
+      objectReference: {fileID: 1682449944607440280, guid: 7225921dc4d90e7458e1b197df74dafe,
+        type: 3}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: spriteDown
+      value: 
+      objectReference: {fileID: -1922043262228994316, guid: 7225921dc4d90e7458e1b197df74dafe,
+        type: 3}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: spriteUp
+      value: 
+      objectReference: {fileID: 8110279689094839872, guid: 7225921dc4d90e7458e1b197df74dafe,
+        type: 3}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: chaseRange
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4379883896656103373, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -167,55 +222,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+    - target: {fileID: 4379883896656103374, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 4074260021421247650, guid: e55b3ae0494cb3b498e80f8b873ddb2a,
-        type: 3}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: isRanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: attackRange
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: attackRate
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: spriteRight
-      value: 
-      objectReference: {fileID: -8935884951425722877, guid: 7225921dc4d90e7458e1b197df74dafe,
-        type: 3}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: spriteLeft
-      value: 
-      objectReference: {fileID: 1682449944607440280, guid: 7225921dc4d90e7458e1b197df74dafe,
-        type: 3}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: spriteDown
-      value: 
-      objectReference: {fileID: -1922043262228994316, guid: 7225921dc4d90e7458e1b197df74dafe,
-        type: 3}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: spriteUp
-      value: 
-      objectReference: {fileID: 8110279689094839872, guid: 7225921dc4d90e7458e1b197df74dafe,
-        type: 3}
-    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: bulletSpeed
-      value: 4.5
+      propertyPath: health
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4379883896121647201, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}
@@ -226,11 +236,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4379883896656103374, guid: 828e388d6f4847e4894f7d9510a6d8e0,
-        type: 3}
-      propertyPath: health
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4379883896121647202, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}

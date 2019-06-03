@@ -191,24 +191,17 @@ public class GridGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.N))
         {
-            roomI++;
-            Debug.Log("Roomindex: " + roomI);
-            //  Vector3 newCameraPos = new Vector3(roomPos[roomIndex].x, roomPos[roomIndex].y, -10);
-            //  camera.transform.position = newCameraPos;
+            GoToNextRoom();
         }
 
         else if (Input.GetKeyDown(KeyCode.P))
         {
-            roomI--;
-            Debug.Log("Roomindex: " + roomI);
-            //  Vector3 newCameraPos = new Vector3(roomPos[roomIndex].x, roomPos[roomIndex].y, -10);
-            // camera.transform.position = newCameraPos;
+            GoToPreviousRoom();
         }
 
         else if (Input.GetKeyDown(KeyCode.G))
         {
-            Debug.Log("Roomindex: " + roomI);
-            nextGeneration(allGridNumbers[roomI], height, width, roomI);
+            ExecuteGameOfLife();
         }
 
         else if (Input.GetKeyDown(KeyCode.Return))
@@ -218,42 +211,17 @@ public class GridGenerator : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            cellValue++;
-            Debug.Log("cellvalue: " + cellValue);
+            NextIteration();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            cellValue--;
-            Debug.Log("cellvalue: " + cellValue);
+            PreviousIteration();
         }
 
         //Reset -- generate new pattern
         else if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            allGridNumbers[roomI] = GeneratePattern(allGridNumbers[roomI]);
-
-
-            for (int i = 0, x = 1; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    if (allGridNumbers[roomI][i, j] == 0)
-                    {
-                        // gizmoData[(x * j) + gridSize * roomIndex].gizmoColor = Color.black;
-                        gizmoData[roomI].gizmoColor[i, j] = Color.black;
-                    }
-                    else if (allGridNumbers[roomI][i, j] == 1)
-                    {
-                        gizmoData[roomI].gizmoColor[i, j] = Color.yellow;
-                    }
-                    else if (allGridNumbers[roomI][i, j] == 2)
-                    {
-                        gizmoData[roomI].gizmoColor[i, j] = Color.red;
-                    }
-                }
-                x++;
-            }
-
+            ResetPattern();
         }
     }
 
@@ -299,5 +267,61 @@ public class GridGenerator : MonoBehaviour
         }
 
         return grid;
+    }
+
+    void GoToNextRoom()
+    {
+        roomI++;
+        Debug.Log("Roomindex: " + roomI);
+    }
+
+    void GoToPreviousRoom(){
+        roomI--;
+        Debug.Log("Roomindex: " + roomI);
+    }
+
+    void ExecuteGameOfLife()
+    {
+        nextGeneration(allGridNumbers[roomI], height, width, roomI);
+    }
+
+    void NextIteration()
+    {
+        cellValue++;
+        Debug.Log("cellvalue: " + cellValue);
+    }
+
+    void PreviousIteration()
+    {
+        cellValue--;
+        Debug.Log("cellvalue: " + cellValue);
+    }
+
+    //creates a new pattern in case room gets empty/designer is not happy with the result
+    void ResetPattern()
+    {
+        allGridNumbers[roomI] = GeneratePattern(allGridNumbers[roomI]);
+
+
+        for (int i = 0, x = 1; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                if (allGridNumbers[roomI][i, j] == 0)
+                {
+                    // gizmoData[(x * j) + gridSize * roomIndex].gizmoColor = Color.black;
+                    gizmoData[roomI].gizmoColor[i, j] = Color.black;
+                }
+                else if (allGridNumbers[roomI][i, j] == 1)
+                {
+                    gizmoData[roomI].gizmoColor[i, j] = Color.yellow;
+                }
+                else if (allGridNumbers[roomI][i, j] == 2)
+                {
+                    gizmoData[roomI].gizmoColor[i, j] = Color.red;
+                }
+            }
+            x++;
+        }
     }
 }

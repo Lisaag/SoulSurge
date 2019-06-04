@@ -17,7 +17,7 @@ public class GridGenerator : MonoBehaviour
 
     List<GizmoData> gizmoData = new List<GizmoData>();
     private Vector2 gizmoLocations;
-    private Color gizmoColor = Color.black;
+    private Color gizmoColor = new Color(0, 0, 0, 0);
     private int cellIndex = 0;
 
     private int roomI = 0;
@@ -63,7 +63,7 @@ public class GridGenerator : MonoBehaviour
                     }
                     else
                     {
-                        gizmoData[roomAmount].gizmoColor[y, x] = Color.black;
+                        gizmoData[roomAmount].gizmoColor[y, x] = gizmoColor;
                     }
 
                     cellIndex++;
@@ -138,7 +138,7 @@ public class GridGenerator : MonoBehaviour
                 if (future[i, j] == 0)
                 {
                     // gizmoData[(x * j) + gridSize * roomIndex].gizmoColor = Color.black;
-                    gizmoData[roomIndex].gizmoColor[i, j] = Color.black;
+                    gizmoData[roomIndex].gizmoColor[i, j] = gizmoColor;
                     grid[i, j] = future[i, j];
                 }
                 else if (future[i, j] == 1)
@@ -149,6 +149,11 @@ public class GridGenerator : MonoBehaviour
                 else if (future[i, j] == 2)
                 {
                     gizmoData[roomIndex].gizmoColor[i, j] = Color.red;
+                    grid[i, j] = future[i, j];
+                }
+                else if (future[i, j] == 3)
+                {
+                    gizmoData[roomIndex].gizmoColor[i, j] = Color.green;
                     grid[i, j] = future[i, j];
                 }
             }
@@ -185,6 +190,24 @@ public class GridGenerator : MonoBehaviour
                             Instantiate(objects[i], positions[y, x], Quaternion.identity);
                         }
                     }
+                    else if (n[y, x] == 3)
+                    {
+                        int objectIndex = Random.Range(0, 101);
+
+                        if (objectIndex <= 80)
+                        {
+                            Instantiate(objects[6], positions[y, x], Quaternion.identity);
+                        }
+                        else
+                        {
+                            Instantiate(objects[1], positions[y, x], Quaternion.identity);
+                        }
+                    }
+                    else if (n[y, x] == 10)
+                    {
+                        Instantiate(objects[objects.Length - 1], positions[y, x], Quaternion.identity);
+                    }
+
                 }
             }
             roomNum++;
@@ -200,6 +223,7 @@ public class GridGenerator : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+        else if (Input.GetKeyDown(KeyCode.Space)) { SpawnPentagram(); }
     }
 
     void OnDrawGizmos()
@@ -315,7 +339,7 @@ public class GridGenerator : MonoBehaviour
                 if (allGridNumbers[roomI][i, j] == 0)
                 {
                     // gizmoData[(x * j) + gridSize * roomIndex].gizmoColor = Color.black;
-                    gizmoData[roomI].gizmoColor[i, j] = Color.black;
+                    gizmoData[roomI].gizmoColor[i, j] = gizmoColor;
                 }
                 else if (allGridNumbers[roomI][i, j] == 1)
                 {
@@ -325,8 +349,54 @@ public class GridGenerator : MonoBehaviour
                 {
                     gizmoData[roomI].gizmoColor[i, j] = Color.red;
                 }
+                else if (allGridNumbers[roomI][i, j] == 3)
+                {
+                    gizmoData[roomI].gizmoColor[i, j] = Color.green;
+                }
             }
             x++;
         }
+    }
+
+    void SpawnPentagram()
+    {
+        int[,] roomNumbers = allGridNumbers[roomI];
+        for (int y = 1; y < height - 1; y++)
+        {
+            for (int x = 1; x < width - 1; x++)
+            {
+                if (roomNumbers[y, x] > 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (!CheckNeighbours(roomNumbers, y, x))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        //Instantiate(objects[objects.Length - 1], roomPositions[y, x], Quaternion.identity);
+                        roomNumbers[y, x] = 10;
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    bool CheckNeighbours(int[,] roomNumbers, int y, int x)
+    {
+        if (roomNumbers[y, x - 1] != 0) { return false; }
+        else if (roomNumbers[y, x + 1] != 0) { return false; }
+        else if (roomNumbers[y - 1, x - 1] != 0) { return false; }
+        else if (roomNumbers[y - 1, x + 1] != 0) { return false; }
+        else if (roomNumbers[y - 1, x] != 0) { return false; }
+        else if (roomNumbers[y + 1, x - 1] != 0) { return false; }
+        else if (roomNumbers[y + 1, x + 1] != 0) { return false; }
+        else if (roomNumbers[y + 1, x] != 0) { return false; }
+
+        return true;
     }
 }

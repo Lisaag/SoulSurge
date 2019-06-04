@@ -33,11 +33,9 @@ public class LifeManager : MonoBehaviour
 
 	public void Revive()
 	{
-		// Return to last spawnpoint
-		GameManager.instance.ResetAllRooms(Pentagram.ActiveRoomName);
-		//GameManager.instance.LoadNewRoom(Pentagram.activePentagram.transform.parent.gameObject, DoorDirection.NONE);
 		player.transform.position = Pentagram.ActivePosition;
 		player.Revive();
+        shop.SetActive(false);
 	}
 
 	public void GainLife()

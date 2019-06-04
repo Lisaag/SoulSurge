@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
 			return;
 
 		LifeManager.instance.LooseLife();
-		Instantiate(bloodEffect, transform.position, Quaternion.identity, GameManager.instance.currentRoom.transform);
+		Instantiate(bloodEffect, transform.position, Quaternion.identity);
 
 		StopAllCoroutines();
 
@@ -125,6 +125,8 @@ public class Player : MonoBehaviour
 		sr.color = c;
 
 		isDead = false;
+
+        Debug.Log("dead");
 	}
 
 }

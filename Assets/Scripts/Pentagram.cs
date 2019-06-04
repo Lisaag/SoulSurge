@@ -12,43 +12,33 @@ public class Pentagram : MonoBehaviour
 	public Sprite activatedSprite;
 
 	public bool isActiveByDefault = false;
+    private bool isActive = true;
 
 	SpriteRenderer sr;
 
 	private void Awake()
 	{
 		sr = GetComponent<SpriteRenderer>();
-
-		if(isActiveByDefault)
-		{
-			Activate();
-		}
-	}
+        sr.sprite = defaultSprite;
+    }
 
 	private void Update()
 	{
-		if(ActiveRoomName == transform.parent.name)
-		{
-			sr.sprite = activatedSprite;
-		} else
-		{
-			sr.sprite = defaultSprite;
-		}
-	}
-
-	void Activate()
-	{
-		ActiveRoomName = transform.parent.name;
-		ActivePosition = transform.position;
-	}
+        if (isActive)
+            sr.sprite = activatedSprite;
+        else
+        {
+            sr.sprite = defaultSprite;
+        }
+    }
 
 	private void OnTriggerEnter2D(Collider2D collider)
 	{
-		if(collider.CompareTag("Player") && ActiveRoomName != transform.parent.name)
+		if(collider.CompareTag("Player") && isActive)
 		{
-			Activate();
-			collider.GetComponent<Player>().TakeDamage(9999);
-		}
+            isActive = false;
+            collider.GetComponent<Player>().TakeDamage(9999);
+        }
 	}
 
 }

@@ -5,7 +5,6 @@ using TMPro;
 
 public class Lives : MonoBehaviour
 {
-
 	public TextMeshProUGUI text;
 
 	private void Update()

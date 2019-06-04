@@ -33,6 +33,11 @@ public class GridGenerator : MonoBehaviour
 
         foreach (GameObject r in roomTemplates)
         {
+            if (r == roomTemplates[0] || r == roomTemplates[roomTemplates.Length - 1])
+            {
+                continue;
+            }
+
             int rowIndex = 0;
             roomPos.Add(r.transform.position);
 
@@ -181,7 +186,7 @@ public class GridGenerator : MonoBehaviour
                             Instantiate(objects[i], positions[y, x], Quaternion.identity);
                         }
                     }
-                    else if(n[y, x] == 3)
+                    else if (n[y, x] == 3)
                     {
                         int objectIndex = Random.Range(0, 101);
 
@@ -194,6 +199,11 @@ public class GridGenerator : MonoBehaviour
                             Instantiate(objects[1], positions[y, x], Quaternion.identity);
                         }
                     }
+                    else if (n[y, x] == 10)
+                    {
+                        Instantiate(objects[objects.Length - 1], positions[y, x], Quaternion.identity);
+                    }
+
                 }
             }
             roomNum++;
@@ -202,40 +212,14 @@ public class GridGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            GoToNextRoom();
-        }
-
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
-            GoToPreviousRoom();
-        }
-
-        else if (Input.GetKeyDown(KeyCode.G))
-        {
-            ExecuteGameOfLife();
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            PlaceObjects();
-        }
-
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            NextIteration();
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            PreviousIteration();
-        }
-
-        //Reset -- generate new pattern
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ResetPattern();
-        }
+        if (Input.GetKeyDown(KeyCode.N)) { GoToNextRoom(); }
+        else if (Input.GetKeyDown(KeyCode.P)) { GoToPreviousRoom(); }
+        else if (Input.GetKeyDown(KeyCode.G)) { ExecuteGameOfLife(); }
+        else if (Input.GetKeyDown(KeyCode.Return)) { PlaceObjects(); }
+        else if (Input.GetKeyDown(KeyCode.UpArrow)) { NextIteration(); }
+        else if (Input.GetKeyDown(KeyCode.DownArrow)) { PreviousIteration(); }
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) { ResetPattern(); }
+        else if (Input.GetKeyDown(KeyCode.Space)) { SpawnPentagram(); }
     }
 
     void OnDrawGizmos()
@@ -347,5 +331,47 @@ public class GridGenerator : MonoBehaviour
             }
             x++;
         }
+    }
+
+    void SpawnPentagram()
+    {
+        int[,] roomNumbers = allGridNumbers[roomI];
+        for (int y = 1; y < height - 1; y++)
+        {
+            for (int x = 1; x < width - 1; x++)
+            {
+                if (roomNumbers[y, x] > 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (!CheckNeighbours(roomNumbers, y, x))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        //Instantiate(objects[objects.Length - 1], roomPositions[y, x], Quaternion.identity);
+                        roomNumbers[y, x] = 10;
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    bool CheckNeighbours(int[,] roomNumbers, int y, int x)
+    {
+        if (roomNumbers[y, x - 1] != 0) { return false; }
+        else if (roomNumbers[y, x + 1] != 0) { return false; }
+        else if (roomNumbers[y - 1, x - 1] != 0) { return false; }
+        else if (roomNumbers[y - 1, x + 1] != 0) { return false; }
+        else if (roomNumbers[y - 1, x] != 0) { return false; }
+        else if (roomNumbers[y + 1, x - 1] != 0) { return false; }
+        else if (roomNumbers[y + 1, x + 1] != 0) { return false; }
+        else if (roomNumbers[y + 1, x] != 0) { return false; }
+
+        return true;
     }
 }

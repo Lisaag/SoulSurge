@@ -1994,6 +1994,7 @@ MonoBehaviour:
   - {fileID: 891465183634054412, guid: 1951e99f6bfd119448140da2439690fb, type: 3}
   - {fileID: 1585524469782198112, guid: c32f70f1f0c882f43b53ccdbff1c4146, type: 3}
   - {fileID: 722117653436748719, guid: f76e486419e277244afce7307f7f2508, type: 3}
+  - {fileID: 8135199433526017448, guid: 79862dcbdd299b44995b6eedd95673df, type: 3}
 --- !u!4 &1023444895
 Transform:
   m_ObjectHideFlags: 0

@@ -34,6 +34,14 @@ public class RoomTemplates : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            if (rooms[i] == null)
+            {
+                rooms.RemoveAt(i);
+            }
+        }
+
         if (canSpawnBoss)
         {
             if (!spawnedBoss)

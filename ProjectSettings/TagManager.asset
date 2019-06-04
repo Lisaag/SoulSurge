@@ -13,6 +13,8 @@ TagManager:
   - DuplicateChecker
   - SpawnRoom
   - Wall
+  - Undefined
+  - R
   layers:
   - Default
   - TransparentFX

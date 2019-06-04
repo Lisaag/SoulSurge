@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: -4540251129009817875}
   m_Layer: 0
   m_Name: TRB
-  m_TagString: Untagged
+  m_TagString: R
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

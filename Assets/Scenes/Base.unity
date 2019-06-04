@@ -1986,7 +1986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f2ad0538af46f49becc426a8140a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420031}
   objects:
   - {fileID: 5038127710331372868, guid: b021fcf5f3b197a4c8f66172b836139b, type: 3}
   - {fileID: 2608949350774401323, guid: 63bff8e7c007fc3418b1c1ab443fa681, type: 3}
@@ -1994,6 +1993,7 @@ MonoBehaviour:
   - {fileID: 2831455461285473236, guid: dc53270335f137f428e0311b8821d7ba, type: 3}
   - {fileID: 891465183634054412, guid: 1951e99f6bfd119448140da2439690fb, type: 3}
   - {fileID: 1585524469782198112, guid: c32f70f1f0c882f43b53ccdbff1c4146, type: 3}
+  - {fileID: 722117653436748719, guid: f76e486419e277244afce7307f7f2508, type: 3}
 --- !u!4 &1023444895
 Transform:
   m_ObjectHideFlags: 0

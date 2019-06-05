@@ -37,6 +37,11 @@ public class GridGenerator : MonoBehaviour
 
         foreach (GameObject r in roomTemplates)
         {
+            if (r == roomTemplates[0] || r == roomTemplates[roomTemplates.Length - 1])
+            {
+                continue;
+            }
+
             int rowIndex = 0;
             roomPos.Add(r.transform.position);
 
@@ -278,7 +283,7 @@ public class GridGenerator : MonoBehaviour
 
     public void GoToNextRoom()
     {
-        if (roomI + 1 > roomTemplates.Length - 1)
+        if (roomI + 1 > roomTemplates.Length - 3)
         {
             return;
         }

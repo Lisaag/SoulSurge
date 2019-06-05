@@ -168,7 +168,7 @@ MonoBehaviour:
   target: {fileID: 0}
   moveSpeed: 1000
   turnSpeed: 0.08
-  chaseRange: 999
+  chaseRange: 3
   attackRange: 0.75
   attackRate: 1
   attackOffset: {x: 0, y: 0.33}

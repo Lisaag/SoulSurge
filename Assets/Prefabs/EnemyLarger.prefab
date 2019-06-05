@@ -87,6 +87,11 @@ PrefabInstance:
       propertyPath: attackOffset.y
       value: 0.561
       objectReference: {fileID: 0}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: chaseRange
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4379883896656103374, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}
       propertyPath: health

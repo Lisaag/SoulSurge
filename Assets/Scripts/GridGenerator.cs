@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GridGenerator : MonoBehaviour
 {
-
     private GameObject[] roomTemplates;
     private const int width = 11;
     private const int height = 7;
@@ -27,6 +27,7 @@ public class GridGenerator : MonoBehaviour
     public int amountOfIterations = 3;
 
     public GameObject[] objects;
+    public Button generateButton;
 
     public void GenerateGrid()
     {
@@ -37,7 +38,7 @@ public class GridGenerator : MonoBehaviour
 
         foreach (GameObject r in roomTemplates)
         {
-            if (r == roomTemplates[0] || r == roomTemplates[roomTemplates.Length - 1])
+            if (r == roomTemplates[0])
             {
                 continue;
             }
@@ -85,6 +86,7 @@ public class GridGenerator : MonoBehaviour
 
             roomAmount++;
         }
+        generateButton.interactable = false;
     }
 
     // Function to print next generation 
@@ -159,6 +161,11 @@ public class GridGenerator : MonoBehaviour
                 else if (future[i, j] == 3)
                 {
                     gizmoData[roomIndex].gizmoColor[i, j] = Color.green;
+                    grid[i, j] = future[i, j];
+                }
+                else if (future[i, j] == 10)
+                {
+                    gizmoData[roomIndex].gizmoColor[i, j] = Color.magenta;
                     grid[i, j] = future[i, j];
                 }
             }
@@ -283,12 +290,22 @@ public class GridGenerator : MonoBehaviour
 
     public void GoToNextRoom()
     {
-        if (roomI + 1 > roomTemplates.Length - 3)
+        if (roomTemplates[roomI + 1].CompareTag("EndingRoom"))
         {
-            return;
+            if (roomTemplates[roomI + 2]) // Room spawned later than end boss room
+            {
+                roomI += 2;
+                Debug.Log("Roomindex: " + roomI);
+            }
+            else
+            {
+                return;
+            }
         }
-        roomI++;
-        Debug.Log("Roomindex: " + roomI);
+        else
+        {
+            roomI++;
+        }
     }
 
     public void GoToPreviousRoom()

@@ -49,6 +49,7 @@ public class RoomTemplates : MonoBehaviour
                 Instantiate(boss, rooms[rooms.Count - 1].transform.position, Quaternion.identity, rooms[rooms.Count - 1].transform);
                 spawnedBoss = true;
                 Debug.Log("Spawned boss at " + rooms[rooms.Count - 1].gameObject.name);
+                rooms[rooms.Count - 1].tag = "EndingRoom" ;
             }
         }
     }

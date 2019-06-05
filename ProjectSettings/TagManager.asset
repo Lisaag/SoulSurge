@@ -15,6 +15,7 @@ TagManager:
   - Wall
   - Undefined
   - R
+  - EndingRoom
   layers:
   - Default
   - TransparentFX

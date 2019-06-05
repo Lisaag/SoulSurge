@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
         type: 3}
       propertyPath: chaseRange
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1585524469782198115, guid: c32f70f1f0c882f43b53ccdbff1c4146,
         type: 3}
@@ -119,7 +119,7 @@ PrefabInstance:
     - target: {fileID: 1585524469782198143, guid: c32f70f1f0c882f43b53ccdbff1c4146,
         type: 3}
       propertyPath: health
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1585524469250805971, guid: c32f70f1f0c882f43b53ccdbff1c4146,
         type: 3}

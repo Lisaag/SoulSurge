@@ -37,6 +37,7 @@ public class Pentagram : MonoBehaviour
 		if(collider.CompareTag("Player") && isActive)
 		{
             isActive = false;
+            LifeManager.instance.lastCheckpoint = gameObject;
             collider.GetComponent<Player>().TakeDamage(9999);
         }
 	}

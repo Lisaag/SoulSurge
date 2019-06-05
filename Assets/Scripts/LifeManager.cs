@@ -16,6 +16,7 @@ public class LifeManager : MonoBehaviour
 	public GameObject shop;
 	public GameObject gameOver;
 	public Player player;
+    public GameObject lastCheckpoint;
 
 	public void LooseLife()
 	{
@@ -33,7 +34,7 @@ public class LifeManager : MonoBehaviour
 
 	public void Revive()
 	{
-		player.transform.position = Pentagram.ActivePosition;
+		player.transform.position = lastCheckpoint.transform.position;
 		player.Revive();
         shop.SetActive(false);
 	}

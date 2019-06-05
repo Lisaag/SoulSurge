@@ -121,6 +121,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8875853713092629353, guid: 650004913ce100e42a42c63d873aa662,
         type: 3}
+    - target: {fileID: 4379883896656103378, guid: 828e388d6f4847e4894f7d9510a6d8e0,
+        type: 3}
+      propertyPath: chaseRange
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4379883896656103374, guid: 828e388d6f4847e4894f7d9510a6d8e0,
         type: 3}
       propertyPath: health

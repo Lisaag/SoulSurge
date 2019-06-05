@@ -392,7 +392,7 @@ MonoBehaviour:
   closedRoom: {fileID: 6018321459665202998, guid: 1179856952c86934eaed0deb60e45c6f,
     type: 3}
   rooms: []
-  waitTimer: 3
+  waitTimer: 2
   boss: {fileID: 4768424439211567855, guid: 5f74d4f10580f144d80cc7d9a10e82f3, type: 3}
 --- !u!1 &163754825
 GameObject:
@@ -583,6 +583,7 @@ MonoBehaviour:
   - {fileID: 1585524469782198112, guid: c32f70f1f0c882f43b53ccdbff1c4146, type: 3}
   - {fileID: 722117653436748719, guid: 7c7db6e0f7fa0c14f98ff939cc2d673a, type: 3}
   - {fileID: 8135199433526017448, guid: 29b6c69ae64fce242a536a6a9ce9d410, type: 3}
+  generateButton: {fileID: 2020242247}
 --- !u!4 &207001742
 Transform:
   m_ObjectHideFlags: 0
@@ -3887,7 +3888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711f6ac25820ac0429413f2b30e0e24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 100
   bloodEffect: {fileID: 3175875602839779472, guid: 51d9d1601a8abf5498ff2995082f10e8,
     type: 3}
 --- !u!1 &1527848598
